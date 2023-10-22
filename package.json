@@ -1,0 +1,60 @@
+{
+  "name": "ts-library",
+  "version": "1.0.0",
+  "description": "A starter template for typescript-based library",
+  "main": "dist/ts-library.js",
+  "files": [
+    "dist/", 
+    "./LICENSE.md",
+    "./README.md",
+    "./package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henryhale/ts-library.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Henry Hale",
+    "url": "https://github.com/henryhale"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/henryhale/ts-library/issues"
+  },
+  "homepage": "https://github.com/henryhale/ts-library#readme",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && rollup -c",
+    "dev": "concurrently \"tsc -w\" \"rollup -c -w\"",
+    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/",
+    "lint:fix": "eslint \"source/**/*.ts\" --fix",
+    "prepack": "pnpm build",
+    "prepare": "husky install",
+    "release": "release-it",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "lint-staged": {
+    "*.ts": "pnpm lint:fix"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^5.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "auto-changelog": "^2.4.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.52.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "release-it": "^16.2.1",
+    "rollup": "^4.1.4",
+    "typescript": "^5.2.2"
+  }
+}
