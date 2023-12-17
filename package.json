@@ -41,20 +41,27 @@
   "lint-staged": {
     "*.ts": "pnpm lint:fix"
   },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "none"
+  },
   "devDependencies": {
-    "@rollup/plugin-replace": "^5.0.4",
+    "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
     "auto-changelog": "^2.4.0",
     "concurrently": "^8.2.2",
-    "eslint": "^8.52.0",
+    "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "prettier": "^3.0.3",
-    "release-it": "^16.2.1",
-    "rollup": "^4.1.4",
-    "typescript": "^5.2.2"
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "release-it": "^16.3.0",
+    "rollup": "^4.9.0",
+    "typescript": "^5.3.3"
   }
 }
