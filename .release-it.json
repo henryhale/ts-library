@@ -25,9 +25,14 @@
     },
     "plugins": {
         "@release-it/conventional-changelog": {
-            "preset": "angular",
             "infile": "CHANGELOG.md",
-            "header": "# Changelog"
+            "header": "# Changelog",
+            "preset": {
+                "name": "conventionalcommits"
+            },
+            "gitRawCommitsOpts": {
+                "merges": null
+            }
         }
     }
 }
