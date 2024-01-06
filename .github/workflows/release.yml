@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - source/**
+  
+  workflow_dispatch:
 
 jobs:
   release:
