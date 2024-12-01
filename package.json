@@ -2,12 +2,20 @@
   "name": "ts-library",
   "version": "1.0.5",
   "description": "A starter template for typescript-based library",
-  "main": "dist/ts-library.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "browser": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/",
     "./LICENSE.md",
-    "./README.md",
-    "./package.json"
+    "./README.md"
   ],
   "repository": {
     "type": "git",
@@ -25,10 +33,10 @@
   "homepage": "https://github.com/henryhale/ts-library#readme",
   "type": "module",
   "scripts": {
-    "build": "tsc -b && rollup -c",
+    "build": "tsc -b && rollup -c && tsc -d --outDir dist",
     "dev": "concurrently \"tsc -w\" \"rollup -c -w\"",
-    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/",
-    "lint:fix": "eslint \"source/**/*.ts\" --fix",
+    "lint": "eslint source/",
+    "lint:fix": "eslint --fix source/",
     "prepack": "pnpm build",
     "prepare": "husky install",
     "release": "release-it",
@@ -36,7 +44,7 @@
   },
   "engines": {
     "node": ">=18",
-    "pnpm": ">=8"
+    "pnpm": ">=9"
   },
   "lint-staged": {
     "*.ts": "pnpm lint:fix"
@@ -49,19 +57,18 @@
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^8.0.1",
-    "@rollup/plugin-replace": "^5.0.5",
+    "@eslint/js": "^9.16.0",
+    "@release-it/conventional-changelog": "^9.0.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.56.0",
-    "eslint-plugin-prettier": "^5.1.2",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
-    "release-it": "^17.0.1",
-    "rollup": "^4.9.1",
-    "typescript": "^5.3.3"
+    "concurrently": "^9.1.0",
+    "eslint": "^9.16.0",
+    "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.4.1",
+    "release-it": "^17.10.0",
+    "rollup": "^4.28.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0"
   }
 }

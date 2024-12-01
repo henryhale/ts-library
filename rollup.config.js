@@ -1,29 +1,34 @@
-import { readFileSync } from "node:fs";
+import { readFileSync } from "node:fs"
 import terser from "@rollup/plugin-terser";
-import replace from "@rollup/plugin-replace";
 
 const pkg = JSON.parse(readFileSync("./package.json"));
 
-const replacer = replace({
-  preventAssignment: true,
-  values: { __VERSION__: pkg.version },
-});
-
-const banner = `
-/**
+const banner = `/**
  *  TS Library - v${pkg.version}
- *  @author Henry Hale
- *  @license MIT
- *  @url https://github.com/henryhale/ts-library
+ *  @author ${pkg.author.name}
+ *  @license ${pkg.license}
+ *  @url ${pkg.homepage}
  */`;
 
 export default {
     input: "out/index.js",
-    output: {
-      name: pkg.name,
-      file: pkg.main,
-      format: "umd",
-      banner,
-    },
-    plugins: [ replacer, terser() ],
+    output: [
+        {
+            name: pkg.name,
+            file: pkg.browser,
+            format: "umd",
+            banner
+        },
+        {
+            file: pkg.module,
+            format: "es",
+            banner
+        },
+        {
+            file: pkg.main,
+            format: "cjs",
+            banner
+        }
+    ],
+    plugins: [terser()]
 };
